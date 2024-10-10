@@ -13,12 +13,10 @@ function updateCanvasSize() {
 
 window.addEventListener("resize", updateCanvasSize);
 
-
 function setShape(shape) {
     currentShape = shape;
     render();  
 }
-
 
 function setColor(color) {
     if (color === 'random') {
@@ -29,12 +27,10 @@ function setColor(color) {
     render();  
 }
 
-
 function getRandomColor() {
     const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
     return colors[Math.floor(Math.random() * colors.length)];
 }
-
 
 class Estrella {
     constructor(params = {}) {
@@ -79,20 +75,17 @@ class Estrella {
     }
 }
 
-
 function drawCircle(x, y, radius) {
     ctx.beginPath();
     ctx.arc(x, y, radius, 0, Math.PI * 2);
     ctx.fill();
 }
 
-
 function drawSquare(x, y, size) {
     ctx.beginPath();
     ctx.rect(x - size / 2, y - size / 2, size, size);
     ctx.fill();
 }
-
 
 function drawTriangle(x, y, size) {
     ctx.beginPath();
@@ -105,13 +98,16 @@ function drawTriangle(x, y, size) {
 
 let shapesList = [];
 
-
 function createShapes() {
     shapesList = [];
-    for (let x = 0; x < canvas.width; x += 50) {  
-        for (let y = 0; y < canvas.height; y += 50) { 
+    let x = 0;
+    while (x < canvas.width) {
+        let y = 0;
+        while (y < canvas.height) {
             shapesList.push({ x: x + 25, y: y + 25 });
+            y += 50;
         }
+        x += 50;
     }
 }
 
