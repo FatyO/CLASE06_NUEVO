@@ -1,9 +1,10 @@
-window.onload = function() {  // Asegúrate de que el script cargue después del DOM
+window.onload = function() {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
     const mainCircleRadius = 250; // Radio del círculo principal
+    const speedFactor = 0.2;  // Factor global de velocidad para que todo sea más lento
     let circles = [];
 
     // Crear los círculos pequeños
@@ -15,7 +16,7 @@ window.onload = function() {  // Asegúrate de que el script cargue después del
             radius: radius,
             x: centerX + Math.cos(angle) * distance,
             y: centerY + Math.sin(angle) * distance,
-            speed: (Math.random() * 2 - 1) * 0.05, // Velocidad de movimiento
+            speed: (Math.random() * 2 - 1) * 0.01, // Velocidad de movimiento más lenta
             growing: Math.random() > 0.5, // Creciendo o disminuyendo
             angle: angle,
             distance: distance
@@ -28,7 +29,7 @@ window.onload = function() {  // Asegúrate de que el script cargue después del
         // Dibujar círculo principal
         ctx.beginPath();
         ctx.arc(centerX, centerY, mainCircleRadius, 0, Math.PI * 2);
-        ctx.strokeStyle = "black";
+        ctx.strokeStyle = "rgba(0, 150, 255, 0.5)";
         ctx.lineWidth = 3;
         ctx.stroke();
 
@@ -41,15 +42,15 @@ window.onload = function() {  // Asegúrate de que el script cargue después del
                 circle.growing = true;
             }
 
-            // Crecer o encoger el círculo
+            // Crecer o encoger el círculo de forma más lenta
             if (circle.growing) {
-                circle.radius += 0.5;
+                circle.radius += 0.1 * speedFactor;  // Crecimiento más lento
             } else {
-                circle.radius -= 0.5;
+                circle.radius -= 0.1 * speedFactor;
             }
 
-            // Rotar los círculos alrededor del centro
-            circle.angle += circle.speed;
+            // Rotar los círculos alrededor del centro más lentamente
+            circle.angle += circle.speed * speedFactor;
             circle.x = centerX + Math.cos(circle.angle) * circle.distance;
             circle.y = centerY + Math.sin(circle.angle) * circle.distance;
 
