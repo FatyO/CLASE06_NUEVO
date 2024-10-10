@@ -108,4 +108,5 @@ requestAnimationFrame(render);
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
 
 // Documentacion sobre los comandos de dibujo disponibles:
-// https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
+// https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D777
+
