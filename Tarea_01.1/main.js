@@ -15,14 +15,14 @@ function updateCanvasSize() {
 class Circulo {
     constructor(params = {}) {
         this.borderColor = params.borderColor || "#6ec3e6";
-        this.fillColor = "#6ec3e6";  // Siempre será verde cuando esté relleno
+        this.fillColor = "#6ec3e6"; 
         this.borderWidth = 1;
-        this.radiusX = 50;  // Tamaño de los círculos
+        this.radiusX = 50; 
         this.radiusY = 50;
         this.width = this.radiusX * 2;
         this.height = this.radiusY * 2;
-        this.distanceX = 10;  // Espacio entre los círculos en horizontal
-        this.distanceY = 10;  // Espacio entre los círculos en vertical
+        this.distanceX = 10;  
+        this.distanceY = 10; 
 
         this.x = params.x || this.radiusX;
         this.y = params.y || this.radiusY;
@@ -38,21 +38,21 @@ class Circulo {
         CTX.closePath();
 
         if (fill) {
-            CTX.fillStyle = this.fillColor;  // Relleno con verde
-            CTX.fill();  // Rellena el círculo
+            CTX.fillStyle = this.fillColor;  
+            CTX.fill();  
         }
 
-        CTX.stroke();  // Dibuja el borde del círculo
+        CTX.stroke();  
     }
 }
 
 let listaDeCirculos = [];
 
-// Lógica para crear círculos distribuidos tanto vertical como horizontalmente
-for (let x = 0; x < CANVAS.width; x += 2 * 50 + 10) {  // Paso horizontal (2*radio + distancia)
-    for (let y = 0; y < CANVAS.height; y += 2 * 50 + 10) {  // Paso vertical (2*radio + distancia)
+
+for (let x = 0; x < CANVAS.width; x += 2 * 50 + 10) { 
+    for (let y = 0; y < CANVAS.height; y += 2 * 50 + 10) { 
         let nuevoCirculo = new Circulo({
-            x: x + 50,  // Ajuste para centrar
+            x: x + 50,  
             y: y + 50
         });
         listaDeCirculos.push(nuevoCirculo);
@@ -63,7 +63,7 @@ function render() {
     CTX.clearRect(0, 0, CANVAS.width, CANVAS.height);
 
     for (let i = 0; i < listaDeCirculos.length; i++) {
-        let fillCircle = i % 2 === 0;  // Alterna: uno sí (verde), uno no
+        let fillCircle = i % 2 === 0; 
         listaDeCirculos[i].draw(fillCircle);
     }
 

@@ -3,8 +3,8 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let currentShape = 'star';  // Forma predeterminada
-let currentColor = 'red';  // Color predeterminado
+let currentShape = 'star';  
+let currentColor = 'red';  
 
 function updateCanvasSize() {
     canvas.width = canvas.getBoundingClientRect().width;
@@ -13,29 +13,29 @@ function updateCanvasSize() {
 
 window.addEventListener("resize", updateCanvasSize);
 
-// Función para establecer la forma seleccionada
+
 function setShape(shape) {
     currentShape = shape;
-    render();  // Redibujar con la nueva forma
+    render();  
 }
 
-// Función para establecer el color
+
 function setColor(color) {
     if (color === 'random') {
         currentColor = getRandomColor();
     } else {
         currentColor = color;
     }
-    render();  // Redibujar con el nuevo color
+    render();  
 }
 
-// Función para obtener un color aleatorio
+
 function getRandomColor() {
     const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
     return colors[Math.floor(Math.random() * colors.length)];
 }
 
-// Clase para estrellas
+
 class Estrella {
     constructor(params = {}) {
         this.borderColor = currentColor;
@@ -79,21 +79,21 @@ class Estrella {
     }
 }
 
-// Dibuja un círculo
+
 function drawCircle(x, y, radius) {
     ctx.beginPath();
     ctx.arc(x, y, radius, 0, Math.PI * 2);
     ctx.fill();
 }
 
-// Dibuja un cuadrado
+
 function drawSquare(x, y, size) {
     ctx.beginPath();
     ctx.rect(x - size / 2, y - size / 2, size, size);
     ctx.fill();
 }
 
-// Dibuja un triángulo
+
 function drawTriangle(x, y, size) {
     ctx.beginPath();
     ctx.moveTo(x, y - size / 2);
@@ -105,11 +105,11 @@ function drawTriangle(x, y, size) {
 
 let shapesList = [];
 
-// Lógica para crear la forma seleccionada distribuida
+
 function createShapes() {
     shapesList = [];
-    for (let x = 0; x < canvas.width; x += 50) {  // Espacio horizontal
-        for (let y = 0; y < canvas.height; y += 50) {  // Espacio vertical
+    for (let x = 0; x < canvas.width; x += 50) {  
+        for (let y = 0; y < canvas.height; y += 50) { 
             shapesList.push({ x: x + 25, y: y + 25 });
         }
     }
