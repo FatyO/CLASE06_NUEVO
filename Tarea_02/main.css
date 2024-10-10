@@ -1,3 +1,29 @@
-body{
-    background-color: aquamarine;
+body {
+    background-color: #000;
+    color: white;
+    margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
 }
+
+        #canvas {
+            border: 1px solid black;
+            margin-top: 20px; /* Espacio entre los botones y el canvas */
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .button-container, .color-container {
+            display: flex;
+            gap: 10px;
+        }
+    
+
